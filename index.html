@@ -6,6 +6,7 @@
         body {
             background-color: #572e5a;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -15,19 +16,20 @@
 
         .message {
             font-family: "Arial", sans-serif;
-            font-size: 72px;
+            font-size: 50px;
             color: white;
             animation: moveUpDown 2s ease-in-out infinite alternate;
             text-shadow: 0 0 20px rgb(192, 20, 177), 0 0 40px rgb(192, 20, 177), 0 0 80px rgb(192, 20, 177);
             text-align: center;
+            margin-bottom: 30px;
         }
 
         @keyframes moveUpDown {
             0% {
-                transform: translateY(-20px) rotate(0deg);
+                transform: translateY(-20px);
             }
             100% {
-                transform: translateY(20px) rotate(360deg);
+                transform: translateY(20px);
             }
         }
 
@@ -38,29 +40,42 @@
 
         body:hover {
             background-color: #1a0319;
-            animation: explode 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
-        }
-
-        @keyframes explode {
-            0% {
-                transform: scale(1);
-                filter: brightness(1);
-            }
-            100% {
-                transform: scale(1.5);
-                filter: brightness(2);
-            }
         }
 
         h1 {
             position: relative;
             z-index: 1;
         }
+
+        .image-container {
+            width: 300px;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            transition: transform 0.5s ease-in-out;
+        }
+
+        img:hover {
+            transform: rotateY(180deg);
+        }
     </style>
 </head>
 <body>
     <div class="message">
         <h1>http://gereby.com is coming soon</h1>
+    </div>
+    <div class="image-container">
+        <img src="275074338_364583735311188_7405294610886784832_n.jpg" alt="Foto">
     </div>
 </body>
 </html>
