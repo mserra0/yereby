@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Página de bienvenida</title>
+    <style>
+        body {
+            background-color: #572e5a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .message {
+            font-family: "Arial", sans-serif;
+            font-size: 72px;
+            color: white;
+            animation: moveUpDown 2s ease-in-out infinite alternate;
+            text-shadow: 0 0 20px rgb(192, 20, 177), 0 0 40px rgb(192, 20, 177), 0 0 80px rgb(192, 20, 177);
+            text-align: center;
+        }
+
+        @keyframes moveUpDown {
+            0% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(20px);
+            }
+        }
+
+        .message:hover {
+            animation-play-state: paused;
+            color: #ff1493;
+        }
+
+        .message::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .message:hover::after {
+            opacity: 1;
+        }
+
+        h1 {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="message">
+        <h1>http://gereby.com is coming soon</h1>
+    </div>
+</body>
+</html>
