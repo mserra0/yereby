@@ -10,7 +10,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            overflow: hidden;
             transition: background-color 0.3s ease-in-out;
         }
 
@@ -48,12 +47,14 @@
         }
 
         .image-container {
-            width: 300px;
+            width: 250px;
             height: auto;
             display: flex;
             justify-content: center;
             align-items: center;
             perspective: 1000px;
+            position: relative;
+            overflow: hidden;
         }
 
         img {
@@ -61,14 +62,74 @@
             height: auto;
             display: block;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
-            transition: transform 0.5s ease-in-out;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+            transition: transform 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
         }
 
-        img:hover {
+        .image-container:hover img {
             transform: rotateY(180deg);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0);
+        }
+
+        .goggles {
+            position: absolute;
+            top: 43px;
+            left: 45%;
+            transform: translateX(-50%) rotateY(180deg);
+            width: 60px;
+            height: auto;
+            z-index: 2;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            opacity: 1;
+        }
+
+        .image-container:hover .goggles {
+            transform: translateX(-50%) rotateY(0deg);
+            opacity: 0;
+        }
+
+        .link-text {
+            font-family: "Arial", sans-serif;
+            font-size: 20px;
+            color: #00008B; /* Deep Blue color */
+            text-align: center;
+            margin-top: 10px;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        .color-change-button {
+            font-family: "Arial", sans-serif;
+            font-size: 16px;
+            color: white;
+            background-color: #ff1493;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .color-change-button:hover {
+            background-color: #ff0066;
         }
     </style>
+    <script>
+        function changeBackgroundColor() {
+            const body = document.querySelector("body");
+            body.style.backgroundColor = getRandomColor();
+        }
+
+        function getRandomColor() {
+            const letters = "0123456789ABCDEF";
+            let color = "#";
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+    </script>
 </head>
 <body>
     <div class="message">
@@ -76,6 +137,11 @@
     </div>
     <div class="image-container">
         <img src="275074338_364583735311188_7405294610886784832_n.jpg" alt="Foto">
+        <img class="goggles" src="6-2-thug-life-glasses-png.png" alt="Goggles">
     </div>
+    <div class="link-text">
+        <a href="https://www.youtube.com/watch?v=ohx87YKE84M&ab_channel=TheFridayYT" target="_blank" style="color: #00008B;">Para mis tutos de Minecraft</a>
+    </div>
+    <button class="color-change-button" onclick="changeBackgroundColor()">Change Color</button>
 </body>
 </html>
